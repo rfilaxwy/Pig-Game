@@ -12,7 +12,7 @@ GAME RULES:
 var scores, roundScore, activePlayer;
 scores =[0,0];
 roundScore = 0;
-activePlayer =1;
+activePlayer =0;
 
 
 
@@ -36,6 +36,19 @@ document.querySelector('.btn-roll').addEventListener('click', function(){
 	diceDOM.src = 'dice-'+dice+'.png';
 	document.querySelector('#current-'+activePlayer).innerHTML= dice;
 	//3.Update the round score only if the rolled number was not 1
+	if (dice!==1){
+		//add score
+		roundScore+=dice;
+		document.querySelector('#current-'+activePlayer).textContent = roundScore;
+	} else {
+		document.querySelector('#current-'+activePlayer).innerHTML= 0;
+		roundScore=0;
+		if (activePlayer  ===1){
+			activePlayer =0;
+			} else {
+				activePlayer = 1;
+			}
+		}
 });
 
 
